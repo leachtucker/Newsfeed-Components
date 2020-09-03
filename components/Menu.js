@@ -1,12 +1,14 @@
-// This is the data we will be using, study it but don't change anything, yet.
+// Import GSAP Animations
+import { gsap } from "gsap";
 
+// This is the data we will be using, study it but don't change anything, yet.
 let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+    'Students',
+    'Faculty',
+    "What's New",
+    'Tech Trends',
+    'Music',
+    'Log Out'
 ];
 
 /* 
@@ -31,3 +33,35 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
+
+function menuMaker(itemsArr) {
+    // Create a div with 'menu' as its class
+    const menu = document.createElement('div');
+    menu.classList.add('menu');
+
+    // Create a list element then append it to the menu.
+    const list = document.createElement('ul');
+    menu.appendChild(list);
+
+    // Iterate through data and create a li for each item then append it to our list
+    itemsArr.forEach(function(item) {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+    });
+
+    let menuButton = document.querySelector('.menu-button');
+    menuButton.addEventListener('click', function() {
+        // Slide menu in for stretch
+        menu.classList.toggle('menu--open');
+    });
+
+    return menu;
+}
+
+// Finding our div.header. Creating a new div.menu element from the menuItems data provided
+const header = document.querySelector('div.header');
+const newMenu = menuMaker(menuItems);
+
+// Appending the div.menu we created to the div.header
+header.appendChild(newMenu);
