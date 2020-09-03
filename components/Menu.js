@@ -1,5 +1,7 @@
-// This is the data we will be using, study it but don't change anything, yet.
+// Import GSAP Animations
+import { gsap } from "gsap";
 
+// This is the data we will be using, study it but don't change anything, yet.
 let menuItems = [
     'Students',
     'Faculty',
@@ -50,6 +52,7 @@ function menuMaker(itemsArr) {
 
     let menuButton = document.querySelector('.menu-button');
     menuButton.addEventListener('click', function() {
+        // Slide menu in for stretch
         menu.classList.toggle('menu--open');
     });
 
